@@ -1,5 +1,5 @@
 {
-  "name": "Aetriks Relay",
+  "name": "aetriks-relay",
   "version": "1.0.0",
   "description": "A low-powered keylogger server using Express.",
   "main": "server.js",
