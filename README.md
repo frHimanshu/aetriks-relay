@@ -1,89 +1,70 @@
-# Aetriks Relay - Express Server for Logging Keystrokes
+# Aetriks Relay Server
 
-## Disclaimer
+The Aetriks Relay Server is a lightweight Express-based server designed to receive and log keystroke data from the Aetriks Keylogger running on a Windows target PC.
 
-This code DOES NOT promote or encourage any illegal activities! The content in this document is provided solely for educational purposes and to create awareness.
-
-## Overview
-
-This is a proof-of-concept Express server that demonstrates how to log keystrokes using server-side JavaScript. It includes basic GET and POST endpoints and can be extended with additional features such as database integration, better error handling, and more.
+---
 
 ## Features
 
-- **GET `/`**: Displays logged keystroke data from `keyboard_capture.txt`.
-- **POST `/`**: Overwrites the keystroke data in `keyboard_capture.txt`.
-- **POST `/api/keystrokes`**: Appends new keystroke data to `keyboard_capture.txt`.
+- **Keystroke Logging**: Receives keystroke data from the Aetriks Keylogger and logs it to a file (`keyboard_capture.txt`).
+- **Web Interface**: Provides a simple web interface to view logged keystrokes.
+- **API Endpoints**: Includes endpoints for logging keystrokes and advanced integrations.
+- **Lightweight**: Built using Node.js and Express, ensuring minimal resource usage.
+- **Customizable**: Easily configurable to change the listening port or extend functionality.
 
-## Prerequisites
+---
 
-- Ubuntu-based system
-- Python 3
-- Node.js and npm
+## Installation Guide (Linux)
 
-## Setup Instructions
+### **Step 1: Clone the Repository**
 
-1. Clone the repository:
+1. Clone the Aetriks Relay Server repository:
    ```bash
+   cd ~/Aetriks/
    git clone https://github.com/frHimanshu/aetriks-relay.git
-   ```
-2. Navigate to the project directory:
-   ```bash
    cd aetriks-relay
    ```
-3. Run the setup script to install dependencies:
+
+---
+
+### **Step 2: Run the Setup Script**
+
+1. Ensure `commands.txt` is present in the repository. This file contains the commands required to set up the server.
+
+2. Run the setup script:
    ```bash
    python3 setup.py
    ```
-   This script will:
-   - Update and upgrade the system
-   - Install Node.js and npm
-   - Initialize npm and install required packages
-   - Reboot the system (if necessary)
 
-4. Start the server:
+   This will execute the commands listed in `commands.txt` to set up the environment.
+
+---
+
+### **Step 3: Start the Server**
+
+1. Start the server:
    ```bash
-   node server.js
+   npm start
    ```
-   The server will run on port `8080`.
 
-## API Endpoints
+   The server will start and listen on port `8080` by default.
 
-### GET `/`
+2. Verify the server is running by checking the logs:
+   ```bash
+   App is listening on port 8080
+   ```
 
-- **Description**: Displays the logged keystroke data.
-- **Response**:
-  - If `keyboard_capture.txt` exists, it shows the logged data.
-  - If the file does not exist, it displays "Nothing logged yet."
+---
 
-### POST `/`
+## Configuration
 
-- **Description**: Overwrites the keystroke data in `keyboard_capture.txt`.
-- **Request Body**:
-  ```json
-  {
-    "keyboardData": "<keystroke data>"
-  }
-  ```
-- **Response**: Confirms that the data was successfully written.
+The server is pre-configured to listen on port `8080`. If you need to change the port, edit the `server.js` file:
+```javascript
+const port = 8080; // Change this to your desired port
+```
 
-### POST `/api/keystrokes`
-
-- **Description**: Appends new keystroke data to `keyboard_capture.txt`.
-- **Request Body**:
-  ```json
-  {
-    "keyboardData": "<keystroke data>"
-  }
-  ```
-- **Response**: Confirms that the data was successfully appended.
-
-## Future Improvements
-
-- Integrate a database (e.g., MongoDB) for persistent storage.
-- Add input validation using libraries like Mongoose.
-- Implement better error handling and logging.
-- Extend the API with update and delete operations.
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
