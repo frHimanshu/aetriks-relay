@@ -1,19 +1,89 @@
-# Very Basic Express Server with a Resource for Logging Keystrokes
+# Aetriks Relay - Express Server for Logging Keystrokes
 
-## This code DOES NOT promote or encourage any illegal activities! The content in this document is provided solely for educational purposes and to create awareness!
+## Disclaimer
 
-## This is a proof of concept and could be improved on in a lot of ways.
+This code DOES NOT promote or encourage any illegal activities! The content in this document is provided solely for educational purposes and to create awareness.
 
-1. To run this code use `git clone https://github.com/davidbombal/express-server-basic.git`
-2. Run the command `cd/express-server-keylogger-basic`
-3. Run the command `python3 setup.py`. This will do the basic setup on the Ubuntu server. It will install NodeJS, Node Package Manager (NPM) and also install all the modules required such as the Express web framework, the body-parser middleware used by Express.
-4. Run the command `node server.js` to start the server on port ***8080***
+## Overview
 
-You can use the GET and POST methods on the "/" endpoint.
-- GET will show the keylogger data written to the server, with every page refresh.
-- POST will write the data with the body
-  `{
-      keyboardData: <what user entered>
-   }`
-   
-This is a little bare bones project that shows with little effort how powerful a few lines of server side JavaScript using Node can be. It can be improved with the addition of a database such as MongoDB paired with a module such as Mongoose (To validate and structure API input). Also, the addition of update, and remove operations would be quite easy to implement. I also didn't implement good exception handling for this project.   
+This is a proof-of-concept Express server that demonstrates how to log keystrokes using server-side JavaScript. It includes basic GET and POST endpoints and can be extended with additional features such as database integration, better error handling, and more.
+
+## Features
+
+- **GET `/`**: Displays logged keystroke data from `keyboard_capture.txt`.
+- **POST `/`**: Overwrites the keystroke data in `keyboard_capture.txt`.
+- **POST `/api/keystrokes`**: Appends new keystroke data to `keyboard_capture.txt`.
+
+## Prerequisites
+
+- Ubuntu-based system
+- Python 3
+- Node.js and npm
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/frHimanshu/aetriks-relay.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd aetriks-relay
+   ```
+3. Run the setup script to install dependencies:
+   ```bash
+   python3 setup.py
+   ```
+   This script will:
+   - Update and upgrade the system
+   - Install Node.js and npm
+   - Initialize npm and install required packages
+   - Reboot the system (if necessary)
+
+4. Start the server:
+   ```bash
+   node server.js
+   ```
+   The server will run on port `8080`.
+
+## API Endpoints
+
+### GET `/`
+
+- **Description**: Displays the logged keystroke data.
+- **Response**:
+  - If `keyboard_capture.txt` exists, it shows the logged data.
+  - If the file does not exist, it displays "Nothing logged yet."
+
+### POST `/`
+
+- **Description**: Overwrites the keystroke data in `keyboard_capture.txt`.
+- **Request Body**:
+  ```json
+  {
+    "keyboardData": "<keystroke data>"
+  }
+  ```
+- **Response**: Confirms that the data was successfully written.
+
+### POST `/api/keystrokes`
+
+- **Description**: Appends new keystroke data to `keyboard_capture.txt`.
+- **Request Body**:
+  ```json
+  {
+    "keyboardData": "<keystroke data>"
+  }
+  ```
+- **Response**: Confirms that the data was successfully appended.
+
+## Future Improvements
+
+- Integrate a database (e.g., MongoDB) for persistent storage.
+- Add input validation using libraries like Mongoose.
+- Implement better error handling and logging.
+- Extend the API with update and delete operations.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
