@@ -1,7 +1,7 @@
-sudo apt update
-sudo apt upgrade
-sudo apt install nodejs
-sudo apt install npm
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
 sudo npm init -y
 sudo npm install
-sudo reboot
+# sudo reboot  <-- Commented out to prevent automatic restart
