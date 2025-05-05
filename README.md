@@ -35,9 +35,13 @@ The Aetriks Relay Server is a lightweight Express-based server designed to recei
    ```bash
    python3 setup.py
    ```
-
-   This will execute the commands listed in `commands.txt` to set up the environment.
-
+      This will execute the commands listed in `commands.txt` to set up the environment.
+   
+3. Reboot the system
+   ```bash
+   sudo reboot
+   ```
+   
 ---
 
 ### **Step 3: Start the Server**
