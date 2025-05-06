@@ -14,5 +14,14 @@
     "express": "^4.18.1"
   },
   "devDependencies": {},
-  "keywords": []
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frHimanshu/aetriks-relay.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/frHimanshu/aetriks-relay/issues"
+  },
+  "homepage": "https://github.com/frHimanshu/aetriks-relay#readme"
 }
