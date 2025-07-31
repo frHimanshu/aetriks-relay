@@ -1,0 +1,53 @@
+# Java build files
+relay-server/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven specific
+relay-server/logs/
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+**/dependency-reduced-pom.xml
+
+# Python build files
+keylogger/dist/
+keylogger/build/
+keylogger/*.spec
+keylogger/__pycache__/
+keylogger/*.pyc
+keylogger/*.pyo
+keylogger/*.pyd
+
+# IDE-specific
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log and temp files
+*.log
+*.tmp
+*.swp
+
+# Keylogger output files
+keyboard_capture.txt
+keylogger/output.vba
+
+# Virtual environments
+venv/
+env/
+keylogger_env/
+
+# Node modules (if any)
+node_modules/
+
+# Build artifacts
+build/
+dist/
