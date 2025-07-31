@@ -1,15 +1,18 @@
 package com.aetriks.relay.controller;
 
-import com.aetriks.relay.model.KeylogPayload; 
+import java.io.BufferedWriter; 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.aetriks.relay.model.KeyLogPayload;
 
 @RestController
 public class KeyLogController {
