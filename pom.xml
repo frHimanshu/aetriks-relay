@@ -1,16 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.aetriks</groupId>
-    <artifactId>aetriks-relay-java</artifactId>
+    <artifactId>aetriks-relay</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Aetriks Relay Server</name>
-    <description>Java Spring Boot server for capturing and logging keystrokes from Aetriks client</description>
+    <name>Aetriks Relay</name>
+    <description>Spring Boot server for capturing and logging keystrokes</description>
 
     <properties>
         <java.version>17</java.version>
@@ -18,19 +19,19 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
+        <!-- Spring Boot Web Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- For JSON data binding -->
+        <!-- Jackson for JSON processing -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- Spring Boot Starter Test (optional, for unit testing) -->
+        <!-- Spring Boot Test (Optional) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -40,7 +41,7 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -54,11 +55,11 @@
                 </executions>
             </plugin>
 
-            <!-- Compiler plugin for Java 17 -->
+            <!-- Java Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -66,4 +67,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

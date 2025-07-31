@@ -3,24 +3,28 @@ package com.aetriks.relay;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.net.InetAddress;
+
 @SpringBootApplication
 public class AetriksRelayApplication {
 
     public static void main(String[] args) {
+        // Set server to bind to the host machine's actual IP address
+        String hostIp = getHostIp();
+        System.setProperty("server.address", hostIp);
+
         SpringApplication app = new SpringApplication(AetriksRelayApplication.class);
-
-        // Ensure app binds to your host's actual IP instead of localhost
-        System.setProperty("server.address", getHostIp());
-
         app.run(args);
+
+        System.out.println("Server is running on host IP: " + hostIp);
     }
 
-    // Helper method to get host machine's IP address
+    // Get the local machine's IP address
     private static String getHostIp() {
         try {
-            return java.net.InetAddress.getLocalHost().getHostAddress();
+            return InetAddress.getLocalHost().getHostAddress();
         } catch (Exception e) {
-            System.err.println("Unable to determine host IP. Falling back to localhost.");
+            System.err.println("[Error] Unable to resolve host IP. Defaulting to localhost.");
             return "127.0.0.1";
         }
     }

@@ -1,20 +1,20 @@
-# Java-based Aetriks Relay Server - Setup and Run Commands
+# Aetriks Relay Server (Java Spring Boot) - Setup & Run Instructions
 
 # Clone the repository
 git clone https://github.com/frHimanshu/aetriks-relay.git
 cd aetriks-relay-java
 
-# Build the project using Maven
+# Build the project with Maven
 mvn clean install
 
-# Run the application
+# Run the application directly
 mvn spring-boot:run
 
 # Optional: Clean previous build artifacts
 mvn clean
 
-# Optional: Package the application into a JAR file
+# Optional: Package the app into a runnable JAR
 mvn package
 
 # Run the packaged JAR (after building)
-java -jar target/aetriks-relay-0.0.1-SNAPSHOT.jar
+java -jar target/aetriks-relay-1.0.0.jar

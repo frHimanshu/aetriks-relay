@@ -36,7 +36,7 @@ mvn spring-boot:run
 ```
 - Run the packaged application
 ```bash
-java -jar target/aetriks-relay-java-0.0.1-SNAPSHOT.jar  
+java -jar target/aetriks-relay-java-1.0.0.jar  
 ```
 - Override default port (e.g. 9090):
 ```bash

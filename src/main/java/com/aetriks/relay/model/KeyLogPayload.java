@@ -1,21 +1,25 @@
 package com.aetriks.relay.model;
+import com.aetriks.relay.model.KeyLogPayload; 
 
 public class KeylogPayload {
 
     private String keyboardData;
 
-    // Default constructor
-    public KeylogPayload() {}
+    // Default constructor (required for Spring to bind JSON)
+    public KeylogPayload() {
+    }
 
-    // Constructor with parameter
+    // Parameterized constructor
     public KeylogPayload(String keyboardData) {
         this.keyboardData = keyboardData;
     }
 
+    // Getter
     public String getKeyboardData() {
         return keyboardData;
     }
 
+    // Setter
     public void setKeyboardData(String keyboardData) {
         this.keyboardData = keyboardData;
     }

