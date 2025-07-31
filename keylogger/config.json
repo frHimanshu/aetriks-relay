@@ -1,0 +1,8 @@
+{
+    "ip_address": "YOUR_LINUX_SERVER_IP",
+    "port_number": 8080,
+    "time_interval": 10,
+    "stealth_mode": true,
+    "persistence": true,
+    "log_file": "system_log.txt"
+} 
