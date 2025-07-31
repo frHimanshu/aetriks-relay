@@ -1,10 +1,20 @@
-sudo apt-get update
-sudo apt-get upgrade -y
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm init -y
-sudo npm install
-node -v
-npm -v
+# Java-based Aetriks Relay Server - Setup and Run Commands
 
-# sudo reboot  <-- Commented out to prevent automatic restart
+# Clone the repository
+git clone https://github.com/frHimanshu/aetriks-relay.git
+cd aetriks-relay-java
+
+# Build the project using Maven
+mvn clean install
+
+# Run the application
+mvn spring-boot:run
+
+# Optional: Clean previous build artifacts
+mvn clean
+
+# Optional: Package the application into a JAR file
+mvn package
+
+# Run the packaged JAR (after building)
+java -jar target/aetriks-relay-0.0.1-SNAPSHOT.jar

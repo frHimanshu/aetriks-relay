@@ -1,0 +1,31 @@
+# Java build files
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven specific
+/logs/
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+**/dependency-reduced-pom.xml
+
+# IDE-specific
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log and temp files
+*.log
+*.tmp
+*.swp
+
+# Keylogger output file
+keyboard_capture.txt

